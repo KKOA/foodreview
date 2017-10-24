@@ -1,5 +1,6 @@
 class RestaurantsController < ApplicationController
   def index
+    @restaurants = Restaurant.all
   end
 
   def new
@@ -8,6 +9,12 @@ class RestaurantsController < ApplicationController
   def create
     # render plain: params[:restaurant].inspect
     @restaurant = Restaurant.new(restaurant_params)
+    @restaurant.save
+    redirect_to @restaurant
+  end
+
+  def show
+    @restaurant = Restaurant.find(params[:id])
   end
 
   def edit
