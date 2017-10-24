@@ -10,12 +10,12 @@
     <th>Name</th>
     <th>Description</th>
   </tr>
-
   <% @restaurants.each do |restaurant| %>
     <tr>
       <td><%= restaurant.name %></td>
       <td><%= restaurant.description %></td>
       <td><%= link_to 'Show', restaurant_path(restaurant) %></td>
+      <td><%= link_to 'Edit Restaurant', edit_restaurant_path(restaurant) %></td>
     </tr>
   <% end %>
 </table>
