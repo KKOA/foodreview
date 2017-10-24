@@ -1,3 +1,18 @@
+
+  <% if @restaurant.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        Cannot Save Restuarant
+      </h2>
+      <%= pluralize(@restaurant.errors.count, "Errors") %>
+      <ul>
+        <% @restaurant.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
 <%= form_with scope: :restaurant, url: restaurants_path, local: true do |form| %>
   <p>
     <%= form.label :name %><br>
