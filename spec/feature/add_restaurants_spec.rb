@@ -26,6 +26,7 @@ feature 'Add Restaurants' do
     # add_restaurant(restaurant1[:name],restaurant1[:description],
     # restaurant1[:address1],restaurant1[:address2],
     # restaurant1[:city],restaurant1[:county],restaurant1[:postcode])
+    p page.body
     expect(page).to have_content(name)
     expect(page).to have_content(description)
   end
