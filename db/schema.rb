@@ -12,16 +12,16 @@
 
 ActiveRecord::Schema.define(version: 20171024123244) do
 
-  create_table 'restaurants', force: :cascade do |t|
-    t.string 'name'
-    t.text 'description'
-    t.string 'address1'
-    t.string 'address2'
-    t.string 'city'
-    t.string 'county'
-    t.string 'postcode'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "restaurants", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "address1"
+    t.string "address2"
+    t.string "city"
+    t.string "county"
+    t.string "postcode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
