@@ -1,0 +1,61 @@
+  oo
+  <%= flash[:error].inspect %>
+  <% if flash[:error] %>
+    <div id="error_explanation">
+      <h2>
+        Cannot Save Restuarant
+      </h2>
+
+      <ul>
+        <% flash[:error].each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+    <%
+      flash[:error] = nil
+      flash[:error_count] = nil
+    %>
+  <% end %>
+
+<%= form_with(model: @restaurant) do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %>
+  </p>
+
+  <p>
+    <%= form.label :address1 %><br>
+    <%= form.text_field :address1 %>
+  </p>
+
+  <p>
+    <%= form.label :address2 %><br>
+    <%= form.text_field :address2 %>
+  </p>
+
+  <p>
+    <%= form.label :city %><br>
+    <%= form.text_field :city %>
+  </p>
+
+  <p>
+    <%= form.label :county %><br>
+    <%= form.text_field :county %>
+  </p>
+
+  <p>
+    <%= form.label :postcode %><br>
+    <%= form.text_field :postcode %>
+  </p>
+
+  <p>
+    <%= form.submit :value => 'Save Restaurant' %>
+  </p>
+<% end %>
+<%= link_to 'Back to Restaurants', restaurants_path %>

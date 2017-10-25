@@ -4,13 +4,18 @@ class RestaurantsController < ApplicationController
   end
 
   def new
+    @restaurant = Restaurant.new
   end
 
   def create
     # render plain: params[:restaurant].inspect
     @restaurant = Restaurant.new(restaurant_params)
-    @restaurant.save
+
+    if @restaurant.save
     redirect_to @restaurant
+    else
+      render 'new'
+    end
   end
 
   def show
@@ -18,6 +23,23 @@ class RestaurantsController < ApplicationController
   end
 
   def edit
+    @restaurant = Restaurant.find(params[:id])
+    p flash[:error],'tyhh'
+  end
+
+  def update
+    @restaurant = Restaurant.find(params[:id])
+
+   if @restaurant.update(restaurant_params)
+     redirect_to @restaurant
+   else
+     flash[:error] = @restaurant.errors.full_messages
+    #  flash[:error_count] =
+    p flash[:error]
+     render 'edit'
+   end
+
+
   end
 
   def upadte
