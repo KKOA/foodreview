@@ -19,7 +19,7 @@ def edit_restaurant(
   address1 = '', address2 = '',
   city = '', county = '',
   postcode = '')
-  click_on 'Edit Restaurant'
+  click_on 'Edit'
   fill_in('restaurant[name]', :with => name)
   fill_in('restaurant[description]', :with => description)
   fill_in('restaurant[address1]', :with => address1)
