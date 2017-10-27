@@ -14,43 +14,47 @@
   <% end %>
 
 <%= form_with scope: :restaurant, url: restaurants_path, local: true do |form| %>
-  <p>
+  <div class='form-group'>
     <%= form.label :name %><br>
     <%= form.text_field :name %>
-  </p>
+  </div>
 
-  <p>
+  <div class='form-group'>
     <%= form.label :description %><br>
     <%= form.text_area :description %>
-  </p>
+  </div>
 
-  <p>
+  <div class='form-group'>
     <%= form.label :address1 %><br>
     <%= form.text_field :address1 %>
-  </p>
+  </div>
 
-  <p>
+  <div class='form-group'>
     <%= form.label :address2 %><br>
     <%= form.text_field :address2 %>
-  </p>
+  </div>
 
-  <p>
+  <div class='form-group'>
     <%= form.label :city %><br>
     <%= form.text_field :city %>
-  </p>
+  </div>
 
-  <p>
+  <div class='form-group'>
     <%= form.label :county %><br>
     <%= form.text_field :county %>
-  </p>
+  </div>
 
-  <p>
+  <div class='form-group'>
     <%= form.label :postcode %><br>
     <%= form.text_field :postcode %>
-  </p>
+  </div>
 
-  <p>
+<%= @restaurant.inspect %>
+<%= form.label :image %><br>
+<%= form.file_field :image %>
+
+  <div class='form-group'>
     <%= form.submit %>
-  </p>
+  </div>
 <% end %>
 <%= link_to 'Back to Restaurants', restaurants_path %>
