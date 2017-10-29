@@ -20,9 +20,9 @@
       <td><%= restaurant.postcode %></td>
       <td>
         <% if restaurant.image? %>
-        <%= image_tag(restaurant.image.small_thumb.url) %>
+          <%= image_tag(restaurant.image.small_thumb.url) %>
         <% else %>
-        <%= image_tag('placeholders/150x150.png')%>
+          <%= image_tag('placeholders/150x150.png')%>
         <% end %>
       </td>
       <td><%= link_to 'Show', restaurant_path(restaurant) %></td>
