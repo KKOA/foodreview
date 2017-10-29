@@ -1,4 +1,8 @@
-
+<style>
+label {
+  display:inline;
+}
+</style>
 <% flash[:error].inspect%>
 <% if flash[:error].nil? == false %>
   <div id="error_explanation">
@@ -54,14 +58,38 @@
   </div>
 
   <div class='form-group'>
-    <!-- <%= form.label :image %><br> -->
-    <%= image_tag(@restaurant.image_url) if @restaurant.image? %>
-    <%= form.file_field :image %>
-    <%= form.hidden_field :image_cache %>
+    <% @restaurant.inspect %>
+    <% if @restaurant.image? %>
+      Image Preview<br>
+      <%= link_to(
+          image_tag(
+            @restaurant.image.small_thumb.url, class: 'img-thumbnail', alt: 'Image', id:'imgPreview'
+          ),
+          @restaurant.image.url, target: '_blank', title: 'View fullsize image'
+         ) %>
+      <br><br>
+      <%
+      # Display image if an image has already been upload for this restaurant
+      # Image link to original image
+      %>
+    <% else %>
+      <%= image_tag('placeholders/150x150.png', id:'blah', class: 'img-thumbnail', width:150) %>
+    <% end %>
+
+    <!-- <input type="file" name="restaurant[image]" id="file" class="inputfile" /> -->
+    <%= form.label :image %><br>
+    <%= form.file_field :image, id: "file" %>
+    <%= form.hidden_field :image_cache %><br>
+
+
+    <%
+    # form.hidden_field :image_cache all image file to persist across redisplays.
+    # This ensures that uploaded files do not disappear when a validation fails.
+    %>
   </div>
 
   <div class='form-group'>
-    <%= form.submit :value => 'Save Restaurant' %>
+    <%= form.submit :value => 'Save Restaurant', class: 'btn btn-default' %>
   </div>
 <% end %>
-<%= link_to 'Back to Restaurants', restaurants_path %>
+<%= link_to 'Back to Restaurants', restaurants_path, class: 'btn btn-default' %>

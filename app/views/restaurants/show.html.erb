@@ -1,7 +1,21 @@
-<% if @restaurant.image_url.nil? == false %>
-  <%= image_tag @restaurant.image_url %>
+<!--
+ Carrierwave also provides an image? method for
+us to check whether an attachment is present at all
+(the image method itself will never return nil,
+even if the file is not present)
+-->
+<% @restaurant.inspect %>
+<% if @restaurant.image?%>
+
+<%= link_to(
+    image_tag(
+      @restaurant.image.small_thumb.url, class: 'img-thumbnail', alt: 'Image', id:'imgPreview'
+    ),
+    @restaurant.image.url, target: '_blank', title: 'View fullsize image'
+   ) %>
 <% else %>
-  No image avaliable
+  <%= image_tag('placeholders/150x150.png', class: 'img-thumbnail') %><br>
+  No image avaliable<br><br>
 <% end %>
 <p>
   <strong>Name : </strong>
@@ -37,4 +51,4 @@
   <%= @restaurant.postcode %>
 </p>
 
-<%= link_to 'View Restaurants', restaurants_path %>
+<%= link_to 'View Restaurants', restaurants_path , class: 'btn btn-default'%>

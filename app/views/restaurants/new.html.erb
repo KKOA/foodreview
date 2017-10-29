@@ -1,60 +1,54 @@
 
-  <% if @restaurant.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        Cannot Save Restuarant
-      </h2>
-      <%= pluralize(@restaurant.errors.count, "Errors") %>
-      <ul>
-        <% @restaurant.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+
+<%= render 'shared/errors', object: @restaurant, 'object_name':'Restaurant' %>
 
 <%= form_with scope: :restaurant, url: restaurants_path, local: true do |form| %>
   <div class='form-group'>
     <%= form.label :name %><br>
-    <%= form.text_field :name %>
+    <%= form.text_field :name ,class: 'form-control' %>
   </div>
 
   <div class='form-group'>
     <%= form.label :description %><br>
-    <%= form.text_area :description %>
+    <%= form.text_area :description ,class: 'form-control' %>
   </div>
 
   <div class='form-group'>
     <%= form.label :address1 %><br>
-    <%= form.text_field :address1 %>
+    <%= form.text_field :address1 ,class: 'form-control' %>
   </div>
 
   <div class='form-group'>
     <%= form.label :address2 %><br>
-    <%= form.text_field :address2 %>
+    <%= form.text_field :address2 ,class: 'form-control' %>
   </div>
 
   <div class='form-group'>
     <%= form.label :city %><br>
-    <%= form.text_field :city %>
+    <%= form.text_field :city ,class: 'form-control' %>
   </div>
 
   <div class='form-group'>
     <%= form.label :county %><br>
-    <%= form.text_field :county %>
+    <%= form.text_field :county ,class: 'form-control' %>
   </div>
 
   <div class='form-group'>
     <%= form.label :postcode %><br>
-    <%= form.text_field :postcode %>
+    <%= form.text_field :postcode ,class: 'form-control' %>
   </div>
 
-<%= @restaurant.inspect %>
-<%= form.label :image %><br>
-<%= form.file_field :image %>
+
+<div class='form-group'>
+  <%= form.label :image %><br>
+  <%= image_tag('placeholders/150x150.png', id:'imgPreview', class: 'img-thumbnail') %><br><br>
+  <%= form.label :image %><br>
+  <%= form.file_field :image, id: 'file' %>
+  <%= form.hidden_field :image_cache %><br>
+</div>
 
   <div class='form-group'>
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-default' %>
   </div>
 <% end %>
-<%= link_to 'Back to Restaurants', restaurants_path %>
+<%= link_to 'Back to Restaurants', restaurants_path , class: 'btn btn-default'%>
