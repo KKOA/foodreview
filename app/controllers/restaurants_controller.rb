@@ -28,28 +28,26 @@ class RestaurantsController < ApplicationController
   end
 
   def update
-    @restaurant = Restaurant.find(params[:id])
+  @restaurant = Restaurant.find(params[:id])
 
-   if @restaurant.update(restaurant_params)
-     redirect_to @restaurant
-   else
-    #  flash[:error] = @restaurant.errors.full_messages
-     flash[:error] = @restaurant.errors
-     flash[:full_messages] = @restaurant.errors.full_messages
-     flash[:form] = @restaurant
-    #  flash[:error_count] =
-    # p flash[:error]
-    #  render 'edit'
-     redirect_to edit_restaurant_path(@restaurant)
-   end
-
-
+    if @restaurant.update(restaurant_params)
+      redirect_to @restaurant
+    else
+      #  flash[:error] = @restaurant.errors.full_messages
+      flash[:error] = @restaurant.errors
+      flash[:full_messages] = @restaurant.errors.full_messages
+      flash[:form] = @restaurant
+      redirect_to edit_restaurant_path(@restaurant)
+    end
   end
 
-  def upadte
-  end
 
   def destroy
+    puts params[:id]
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.destroy
+
+     redirect_to restaurants_path
   end
 
   def restaurant_params
