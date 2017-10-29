@@ -1,0 +1,13 @@
+<% if object.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      Cannot Save <%= object_name %>
+    </h2>
+    <%= pluralize(object.errors.count, "Errors") %>
+    <ul>
+      <% object.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
