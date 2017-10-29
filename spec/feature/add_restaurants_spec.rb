@@ -14,9 +14,7 @@ feature 'Add Restaurants' do
       county:  'Wiltshire',
       postcode: 'SN6 5FF'
     }
-    add_restaurant(restaurant1[:name],  restaurant1[:description],
-    restaurant1[:address1], restaurant1[:address2],
-    restaurant1[:city], restaurant1[:county],restaurant1[:postcode])
+    add_restaurant(restaurant1)
     expect(page).to have_content(restaurant1[:name])
     expect(page).to have_content(restaurant1[:description])
   end
@@ -32,10 +30,7 @@ feature 'Add Restaurants' do
       county: 'Wiltshire',
       postcode: 'SN6 5FF'
     }
-    add_restaurant(restaurant1[:name], restaurant1[:description],
-    restaurant1[:address1], restaurant1[:address2],
-    restaurant1[:city], restaurant1[:county], restaurant1[:postcode])
-    #p page.body
+    add_restaurant(restaurant1)
     click_on('View Restaurants')
     restaurant2 =
     {
@@ -47,9 +42,7 @@ feature 'Add Restaurants' do
       county: 'Wiltshire',
       postcode: 'SN3 5FF'
     }
-    add_restaurant(restaurant2[:name], restaurant2[:description],
-    restaurant2[:address1], restaurant2[:address2],
-    restaurant2[:city], restaurant2[:county], restaurant2[:postcode])
+    add_restaurant(restaurant2)
     click_on('View Restaurants')
     expect(page).to have_content(restaurant1[:name])
     expect(page).to have_content(restaurant2[:name])
@@ -67,12 +60,9 @@ feature 'Add Restaurants' do
       county: '',
       postcode: ''
     }
-    add_restaurant(restaurant1[:name], restaurant1[:description],
-    restaurant1[:address1], restaurant1[:address2],
-    restaurant1[:city], restaurant1[:county], restaurant1[:postcode])
-    #p page.body
+    add_restaurant(restaurant1)
     within(:css, '#error_explanation')do
-      expect(page).to have_content('Cannot Save Restuarant')
+      expect(page).to have_content('Cannot Save Restaurant')
     end
   end
 end
