@@ -52,3 +52,38 @@ even if the file is not present)
 </p>
 
 <%= link_to 'View Restaurants', restaurants_path , class: 'btn btn-default'%>
+
+<td><%= link_to 'Edit', edit_restaurant_path(@restaurant) , class: 'btn btn-default'%></td>
+<td><%= link_to 'Delete', restaurant_path(@restaurant) , class: 'btn btn-default' %>
+
+<div class='reviews'>
+<h2>Reviews</h2>
+<% if @restaurant.reviews.count > 0 %>
+  <% @restaurant.reviews.each do |review| %>
+    <p>
+      <strong>Commenter:</strong>
+      <%= review.comment %>
+    </p>
+    <p>
+      <strong>Comment:</strong>
+      <%= review.rating %>
+    </p>
+  <% end %>
+<% else %>
+  <p>No reviews avaliable for this restaurant</p>
+<% end %>
+</div>
+<h2>Add a comment:</h2>
+<%= form_with(model: [ @restaurant, @restaurant.reviews.build ], local: true) do |form| %>
+  <div class='form-group'>
+    <%= form.label :comment %><br>
+    <%= form.text_area :comment ,class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <%= form.label :rating %><br>
+    <%= form.select(:rating, 1..5,{},{class: 'form-control'}) %>
+  </div>
+  <div class='form-group'>
+    <%= form.submit 'Create Review', :class => 'btn btn-default' %>
+  </div>
+<% end %>
