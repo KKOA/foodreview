@@ -10,28 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171029180518) do
-
-  create_table "restaurants", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.string "address1"
-    t.string "address2"
-    t.string "city"
-    t.string "county"
-    t.string "postcode"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "image"
+ActiveRecord::Schema.define(version: 20_171_029_180_518) do
+  create_table 'restaurants', force: :cascade do |t|
+    t.string 'name'
+    t.text 'description'
+    t.string 'address1'
+    t.string 'address2'
+    t.string 'city'
+    t.string 'county'
+    t.string 'postcode'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'image'
   end
 
-  create_table "reviews", force: :cascade do |t|
-    t.string "comment"
-    t.integer "rating"
-    t.integer "restaurant_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["restaurant_id"], name: "index_reviews_on_restaurant_id"
+  create_table 'reviews', force: :cascade do |t|
+    t.string 'comment'
+    t.integer 'rating'
+    t.integer 'restaurant_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['restaurant_id'], name: 'index_reviews_on_restaurant_id'
   end
-
 end
