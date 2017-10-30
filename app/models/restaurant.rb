@@ -5,4 +5,5 @@ class Restaurant < ApplicationRecord
   validates :city, presence: true, length: { minimum: 3 }
   validates :postcode, presence: true, length: { minimum: 3, maximum: 10}
   mount_uploader :image, ImageUploader
+  has_many :reviews
 end
