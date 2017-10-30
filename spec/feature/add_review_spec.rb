@@ -16,10 +16,10 @@ feature 'Add Review' do
       }
     add_restaurant(restaurant1)
     review1 =
-    {
-      comment:  '',
-      rating: '4'
-    }
+      {
+        comment:  '',
+        rating: '4'
+      }
     add_review(review1)
     expect(page).to have_content(review1[:comment])
     expect(page).to have_content(review1[:rating])
@@ -38,22 +38,21 @@ feature 'Add Review' do
       }
     add_restaurant(restaurant1)
     review1 =
-    {
-      comment:  'som text',
-      rating: '4'
-    }
+      {
+        comment:  'som text',
+        rating: '4'
+      }
     add_review(review1)
     review2 =
-    {
-      comment:  'Greate chicken restaurant',
-      rating: '3'
-    }
+      {
+        comment:  'Greate chicken restaurant',
+        rating: '3'
+      }
     add_review(review2)
     puts page.body
     within("//div[id='review2']") do
       expect(page).to have_content(review2[:comment])
       expect(page).to have_content(review2[:rating])
     end
-
   end
 end
