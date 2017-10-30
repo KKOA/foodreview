@@ -8,8 +8,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-path = "#{Rails.root}/public/uploads/restaurant/image/"
-Restaurant.where(name: 'Hing Lee Chinese Restaurant').first_or_create(
+path = "#{Rails.root}/app/assets/images/sample/"
+restaurant1 = Restaurant.where(name: 'Hing Lee Chinese Restaurant').first_or_create(
   name: 'Hing Lee Chinese Restaurant',
   description: 'Chinese',
   address1: '32 Curlew Street',
@@ -18,10 +18,22 @@ Restaurant.where(name: 'Hing Lee Chinese Restaurant').first_or_create(
   county:  '',
   postcode: 'SE1 2ND',
   # image: 'restaurant1.jpg'
-  image: File.open("#{path}1/restaurant1.jpg")
+  image: File.open("#{path}restaurant1.jpg")
 )
 
-Restaurant.where(name: 'II TOSCANO').first_or_create(
+Review.where(comment: 'Great Restaurant', restaurant_id: restaurant1.id).first_or_create(
+  comment: 'Great Restaurant',
+  rating: '4',
+  restaurant_id: restaurant1.id
+)
+
+Review.where(comment: 'Best Chinese experience yet', restaurant_id: restaurant1.id).first_or_create(
+  comment: 'Best Chinese experience yet',
+  rating: '5',
+  restaurant_id: restaurant1.id
+)
+
+restaurant2 = Restaurant.where(name: 'II TOSCANO').first_or_create(
   name: 'II TOSCANO',
   description: 'Italien',
   address1: '7 Brighton Road',
@@ -31,7 +43,15 @@ Restaurant.where(name: 'II TOSCANO').first_or_create(
   postcode: 'SM2 5AD'
 )
 
-Restaurant.where(name: 'The Waterside Inn').first_or_create(
+Review.where(comment: 'Worse restaurant ever', restaurant_id: restaurant1.id).first_or_create(
+  comment: 'Worse restaurant ever',
+  rating: '1',
+  restaurant_id: restaurant2.id
+)
+
+# "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "comment" varchar, "rating" integer, "restaurant_id" integer, "created_at" dat
+
+restaurant3 = Restaurant.where(name: 'The Waterside Inn').first_or_create(
   name: 'The Waterside Inn',
   description: 'French cuisine',
   address1: 'Ferry Road',
@@ -40,7 +60,13 @@ Restaurant.where(name: 'The Waterside Inn').first_or_create(
   county:  '',
   postcode: 'SL6 2AT',
   # image: 'restaurant1.jpg'
-  image: File.open("#{path}3/restaurant5.jpg")
+  image: File.open("#{path}restaurant3.jpg")
+)
+
+Review.where(comment: 'Average', restaurant_id: restaurant1.id).first_or_create(
+  comment: 'Average',
+  rating: '3',
+  restaurant_id: restaurant3.id
 )
 
 Restaurant.where(name: 'The Shakes & Co London').first_or_create(
@@ -52,7 +78,7 @@ Restaurant.where(name: 'The Shakes & Co London').first_or_create(
   county:  '',
   postcode: 'NW10 2PB',
   # image: 'restaurant1.jpg'
-  image: File.open("#{path}4/restaurant6.jpg")
+  image: File.open("#{path}restaurant4.jpg")
 )
 
 Restaurant.where(name: 'Infamous Diner').first_or_create(
@@ -64,7 +90,7 @@ Restaurant.where(name: 'Infamous Diner').first_or_create(
   county:  '',
   postcode: 'M4 1EY',
   # image: 'restaurant1.jpg'
-  image: File.open("#{path}5/restaurant7.jpg")
+  image: File.open("#{path}restaurant5.jpg")
 )
 
 Restaurant.where(name: 'Los Gatos').first_or_create(
@@ -76,7 +102,7 @@ Restaurant.where(name: 'Los Gatos').first_or_create(
   county:  '',
   postcode: 'SN4 4BJ',
   # image: 'restaurant1.jpg'
-  image: File.open("#{path}6/restaurant8.jpg")
+  image: File.open("#{path}restaurant6.jpg")
 )
 
 Restaurant.where(name: 'Nur').first_or_create(
@@ -88,7 +114,7 @@ Restaurant.where(name: 'Nur').first_or_create(
   county:  '',
   postcode: 'G5 9HR',
   # image: 'restaurant1.jpg'
-  image: File.open("#{path}7/restaurant9.jpg")
+  image: File.open("#{path}restaurant7.jpg")
 )
 
 Restaurant.where(name: 'Thai Garden').first_or_create(
@@ -100,7 +126,7 @@ Restaurant.where(name: 'Thai Garden').first_or_create(
   county:  '',
   postcode: 'BS3 3LR',
   # image: 'restaurant1.jpg'
-  image: File.open("#{path}8/restaurant3.jpg")
+  image: File.open("#{path}restaurant8.jpg")
 )
 
 Restaurant.where(name: 'Amigos Mexican Restaurant').first_or_create(
@@ -112,7 +138,7 @@ Restaurant.where(name: 'Amigos Mexican Restaurant').first_or_create(
   county:  '',
   postcode: 'WR1 2NA',
   # image: 'restaurant1.jpg'
-  image: File.open("#{path}9/restaurant10.jpg")
+  image: File.open("#{path}restaurant9.jpg")
 )
 
 Restaurant.where(name: 'Lebaneat').first_or_create(
@@ -124,5 +150,5 @@ Restaurant.where(name: 'Lebaneat').first_or_create(
   county:  '',
   postcode: 'DH1 3ET',
   # image: 'restaurant1.jpg'
-  image: File.open("#{path}10/restaurant11.jpg")
+  image: File.open("#{path}restaurant10.jpg")
 )
