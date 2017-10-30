@@ -1,8 +1,6 @@
 require 'rails_helper'
-
-feature 'Add Review' do
-  # include CapybaraHelper
-  scenario 'Leave Review on property' do
+feature 'Delete Review' do
+  scenario 'Remove assoicate review upon restaurant destruction' do
     visit '/restaurants/index'
     restaurant1 =
       {
@@ -10,8 +8,8 @@ feature 'Add Review' do
         description: 'Chicken',
         address1: '5 Lomdon Close',
         address2: 'Sparclls',
-        city:  'Swindon',
-        county:  'Wiltshire',
+        city: 'Swindon',
+        county: 'Wiltshire',
         postcode: 'SN6 5FF'
       }
     add_restaurant(restaurant1)
@@ -21,10 +19,13 @@ feature 'Add Review' do
         rating: '4'
       }
     add_review(review1)
-    expect(page).to have_content(review1[:comment])
-    expect(page).to have_content(review1[:rating])
+    click_on 'View Restaurants'
+    within("//tr[id='1']") do
+      click_on 'Delete'
+    end
+    expect(Review.where(restaurant_id: 1).count).to eq 0
   end
-  scenario 'Leave Another Review on property' do
+  scenario 'wtfRemove assoicate review upon restaurant destruction' do
     visit '/restaurants/index'
     restaurant1 =
       {
@@ -32,27 +33,18 @@ feature 'Add Review' do
         description: 'Chicken',
         address1: '5 Lomdon Close',
         address2: 'Sparclls',
-        city:  'Swindon',
-        county:  'Wiltshire',
+        city: 'Swindon',
+        county: 'Wiltshire',
         postcode: 'SN6 5FF'
       }
     add_restaurant(restaurant1)
     review1 =
       {
-        comment:  'som text',
+        comment:  '',
         rating: '4'
       }
     add_review(review1)
-    review2 =
-      {
-        comment:  'Greate chicken restaurant',
-        rating: '3'
-      }
-    add_review(review2)
-    puts page.body
-    within("//div[id='review2']") do
-      expect(page).to have_content(review2[:comment])
-      expect(page).to have_content(review2[:rating])
-    end
+    click_on 'Delete'
+    expect(Review.where(restaurant_id: 1).count).to eq 0
   end
 end
