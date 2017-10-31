@@ -51,6 +51,12 @@ even if the file is not present)
   <%= @restaurant.postcode %>
 </p>
 
+<p>
+  <strong>Average Rating: </strong><br>
+  <span class='star-rating' data-score=<%= @avg_reviews %>></span>
+  <br><%= @avg_reviews %>
+</p>
+
 <%= link_to 'View Restaurants', restaurants_path , class: 'btn btn-default'%>
 
 <td><%= link_to 'Edit', edit_restaurant_path(@restaurant) , class: 'btn btn-default'%></td>
