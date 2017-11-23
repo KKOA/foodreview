@@ -1,3 +1,4 @@
+<!--
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -22,3 +23,39 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+-->
+# Foodreview
+
+Constructed a clone of Yelp using ruby on rails. 
+
+## Technologies used
+- Ruby on Rails
+- bootstrap
+- Sqlite3
+- JQuery
+- Rspec
+- Capybara
+- selenium webdriver
+
+
+## Set up application
+
+From terminal/command line type the following commands
+```
+$ git clone https://github.com/KKOA/foodreview.git
+$ cd foodreview
+$ bundle
+$ psql
+$ createdb yelpz_test
+$ createdb yelpz_development
+$ bin/rails db:migrate
+$ rspec
+$ bin/rails server
+```
+
+## How to run tests
+From terminal/command line type the following commands
+```
+$ cd foodreview
+$ rspec
+```
