@@ -25,7 +25,7 @@ feature 'Delete Review' do
     end
     expect(Review.where(restaurant_id: 1).count).to eq 0
   end
-  scenario 'wtfRemove assoicate review upon restaurant destruction' do
+  scenario 'Remove assoicate review upon restaurant destruction' do
     visit '/restaurants/index'
     restaurant1 =
       {
