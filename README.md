@@ -45,9 +45,6 @@ From terminal/command line type the following commands
 $ git clone https://github.com/KKOA/foodreview.git
 $ cd foodreview
 $ bundle
-$ psql
-$ createdb yelpz_test
-$ createdb yelpz_development
 $ bin/rails db:migrate
 $ rspec
 $ bin/rails server
